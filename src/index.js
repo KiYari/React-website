@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Route, BrowserRouter as Router, Link} from 'react-router-dom';
 import './index.css';
-import App from './App';
+import Start from './Pages/Start';
+import Video from './Pages/Video';
+import NoPage from './Pages/NoPage';
+import NotFound from './Pages/NotFound'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <NoPage />
+  </Router>,
   document.getElementById('root')
 );
 
