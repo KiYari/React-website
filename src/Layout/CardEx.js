@@ -7,44 +7,47 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {Route, BrowserRouter as Router, Link} from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import cards from './Content';
+import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   cardMedia: {
     paddingTop: '56.25%', // 16:9
-    display: 'flex',
+    display: 'flex'
   },
-  cardContent: {
-  },
+  cardContent: {}
 }));
 
 export default function CardEx(props) {
   const classes = useStyles();
 
+  function handleClick() {
+    window.location.reload();
+  }
+
   return (
-        <Router>
-        <Link to={{
-          pathname:'/video',
-          state: {
-            vid_n: "https://www.youtube.com/watch?v=hDgdG6f6F8I",
-          }
+    <div>
+    <Link to={{
+        pathname: '/video',
+        state: {
+          vid: "https://www.youtube.com/watch?v=hDgdG6f6F8I",
+          shead: {props.head},
+          sdesc: {props.desc},
+        }
+      }}>
+      <CardActionArea onClick={() => {
+          setTimeout("window.location.reload()", 1);
         }}>
-          <CardActionArea>
-              <CardMedia
-                className={classes.cardMedia}
-                image={props.imgs}
-                title="Image title"
-              />
-          </CardActionArea>
-          </Link>
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h5" component="h2">
-                {props.head}
-              </Typography>
-              <Typography>
-                {props.desc}
-              </Typography>
-            </CardContent>
-          </Router>
-  );
+        <CardMedia className={classes.cardMedia} image={props.imgs} title="Image title" onclick="handleClick()"/>
+      </CardActionArea>
+    </Link>
+    <CardContent className={classes.cardContent}>
+      <Typography gutterBottom="gutterBottom" variant="h5" component="h2">
+        {props.head}
+      </Typography>
+      <Typography>
+        {props.desc}
+      </Typography>
+    </CardContent>
+  </div>);
 }

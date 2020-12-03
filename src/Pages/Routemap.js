@@ -5,13 +5,10 @@ import Video from './Video'
 import Start from './Start'
 import Interface from '../Layout/Interface'
 
-
 export default function Routemap() {
-  return (
-    <Switch>
-      <Route exact path="/" component={Start} />
-      <Route path="/video" component={Video} />
-      <Route component={NotFound} />
-    </Switch>
-  );
+  return (<Switch>
+    <Route exact="exact" path="/" component={Start}/>
+    <Route path="/video" component={Video}/>
+    <Route component={NotFound}/>
+  </Switch>);
 }
