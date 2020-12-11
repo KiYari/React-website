@@ -28,11 +28,11 @@ export default function CardEx(props) {
   return (
     <div>
     <Link to={{
-        pathname: '/video',
+        pathname: props.vref,
         state: {
-          vid: "https://www.youtube.com/watch?v=hDgdG6f6F8I",
-          shead: {props.head},
-          sdesc: {props.desc},
+          vid: props.vid,
+          shead: props.head,
+          sdesc: props.desc,
         }
       }}>
       <CardActionArea onClick={() => {

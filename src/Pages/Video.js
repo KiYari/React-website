@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, BrowserRouter as Router} from "react-router-dom";
+import {Route, BrowserRouter as Router, useLocation} from "react-router-dom";
 import Interface from '../Layout/Interface';
 import ReactPlayer from "react-player";
 import Grid from '@material-ui/core/Grid';
@@ -29,6 +29,7 @@ export default function Video(props) {
   const handleClose = () => {
     setOpen(false);
   };
+  const location = useLocation();
 
   return (
     <Interface>
@@ -36,17 +37,17 @@ export default function Video(props) {
         {/* End hero unit */}
         <Grid container="container" spacing={3}>
           <Grid item="item">
-            <ReactPlayer className={classes.ytarea} url={props.location.state.vid}
+            <ReactPlayer className={classes.ytarea} url={location.state.vid}
             />
             <Grid container="container" spacing={3}>
               <Grid item="item" xs={12}>
                 <Typography gutterBottom="gutterBottom" variant="h5" component="h2">
-                  {props.location.state.shead}
+                  {location.state.shead}
                 </Typography>
               </Grid>
               <Grid item="item" xs={6}>
                 <Typography>
-                  {props.location.state.sdesc}
+                  {location.state.sdesc}
                 </Typography>
               </Grid>
               <Grid item="item" xs={6}>
@@ -55,7 +56,7 @@ export default function Video(props) {
                   <DialogTitle id="alert-dialog-title">{"Здраствуйте, заберите ссылку"}</DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                      {props.location.state.vid}
+                      {location.state.vid}
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
