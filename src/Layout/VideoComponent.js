@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import {Route, BrowserRouter as Router, Link} from 'react-router-dom';
 import cards from './Content';
 import {makeStyles} from '@material-ui/core/styles';
+import UrlButton from './urlButton'
+import ReactPlayer from "react-player";
 
 const useStyles = makeStyles((theme) => ({
   cardMedia: {
@@ -18,36 +20,30 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {}
 }));
 
-export default function CardEx(props) {
+export default function VideoComponent(props) {
   const classes = useStyles();
-
+  console.log(props.head)
   function handleClick() {
     window.location.reload();
   }
 
   return (
-    <div>
-    <Link to={{
-        pathname: "/video/" + props.id,
-        state: {
-          vid: props.vid,
-          shead: props.head,
-          sdesc: props.desc,
-        }
-      }}>
-      <CardActionArea onClick={() => {
-          setTimeout("window.location.reload()", 1);
-        }}>
-        <CardMedia className={classes.cardMedia} image={props.imgs} title="Image title" onclick="handleClick()"/>
-      </CardActionArea>
-    </Link>
-    <CardContent className={classes.cardContent}>
-      <Typography gutterBottom="gutterBottom" variant="h5" component="h2">
-        {props.head}
-      </Typography>
-      <Typography>
-        {props.desc}
-      </Typography>
-    </CardContent>
-  </div>);
+    <Grid container="container" spacing={3}>
+      <Grid item="item">
+        <ReactPlayer className={classes.ytarea} url={props.vid}/>
+        <Grid container="container" spacing={3}>
+          <Grid item="item" xs={12}>
+            <Typography gutterBottom="gutterBottom" variant="h5" component="h2">
+              {props.head}<br/>
+            </Typography>
+          </Grid>
+          <Grid item="item" xs={6}>
+            <Typography>
+              {props.desc}
+            </Typography>
+          </Grid>
+          <UrlButton urls={props.vid}/>
+        </Grid>
+      </Grid>
+    </Grid>);
 }

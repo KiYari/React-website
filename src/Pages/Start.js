@@ -6,6 +6,7 @@ import Contentt from '../Layout/Content'
 import CardEx from '../Layout/CardEx'
 import Interface from '../Layout/Interface'
 
+
 export default function Start() {
   return (
     <Interface>
